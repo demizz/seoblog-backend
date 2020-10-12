@@ -60,7 +60,7 @@ exports.getAllBlogsForOneUser = catchAsync(async (req, res, next) => {
 		.populate('categories', '_id name slug')
 		.populate('tags', '_id name slug')
 		.populate('postedBy', '_id name username slug')
-		.select('_id title postedBy slug createdAt updatedAt');
+		.select('_id title postedBy body slug createdAt updatedAt');
 	if (!listblogs) {
 		return next(
 			new httpError('fail to find the list of blogs for the current user', 400)

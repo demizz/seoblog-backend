@@ -19,20 +19,16 @@ router
 	.post(blogsController.allBlogsWithCategoriesAndTags);
 router.route('/listRelated').post(blogsController.listRelated);
 router.route('/:slug').get(blogsController.getOneBlog);
-router
-	.route('/:slug')
-	.delete(
-		authController.requireLogin,
-		authController.isAdmin,
-		blogsController.deleteBlog
-	);
-router
-	.route('/:slug')
-	.put(
-		authController.requireLogin,
-		authController.isAdmin,
-		blogsController.updateBlog
-	);
+router.route('/:slug').delete(
+	authController.requireLogin,
+
+	blogsController.deleteBlog
+);
+router.route('/:slug').put(
+	authController.requireLogin,
+
+	blogsController.updateBlog
+);
 router.route('/photo/:slug').get(blogsController.getPhoto);
 
 module.exports = router;
